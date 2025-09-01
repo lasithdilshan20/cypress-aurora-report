@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  aurora-reporter:
+    build: .
+    container_name: cypress-aurora-reporter
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=production
+      - AURORA_DB_PATH=/app/data/aurora.db
+      - AURORA_SCREENSHOT_DIR=/app/data/screenshots
+      - AURORA_OUTPUT_DIR=/app/data/reports
+    volumes:
+      - aurora_data:/app/data
+      - ./cypress-reports:/app/cypress-reports:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4200/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  aurora_data:
+    driver: local
