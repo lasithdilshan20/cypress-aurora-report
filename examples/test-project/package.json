@@ -1,0 +1,33 @@
+{
+  "name": "cypress-aurora-test-example",
+  "version": "1.0.0",
+  "description": "Example project to test cypress-aurora-reporter",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:record": "cypress run --record",
+    "cypress:install": "cypress install",
+    "aurora:dashboard": "aurora-dashboard",
+    "validate": "node validate-config.mjs",
+    "setup": "npm install && npm run validate"
+  },
+  "keywords": [
+    "cypress",
+    "testing",
+    "aurora",
+    "reporter"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.0",
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1",
+    "@types/node": "^20.9.0"
+  },
+  "dependencies": {
+    "cypress-aurora-reporter": "file:../../"
+  }
+}

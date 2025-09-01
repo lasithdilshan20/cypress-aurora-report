@@ -1,0 +1,26 @@
+{
+  "name": "example-fixture",
+  "description": "Example fixture file for testing Aurora Reporter file upload functionality",
+  "version": "1.0.0",
+  "testData": {
+    "users": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "role": "admin"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "role": "user"
+      }
+    ],
+    "settings": {
+      "theme": "dark",
+      "notifications": true,
+      "language": "en"
+    }
+  }
+}
