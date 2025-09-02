@@ -1,0 +1,36 @@
+{
+  "run": {
+    "id": "aed8441a-baab-4388-87fc-8cac7c96126d",
+    "startTime": "2025-09-01T13:47:49.069Z",
+    "totalTests": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "pending": 0,
+    "retries": 0,
+    "browserName": "unknown",
+    "browserVersion": "unknown",
+    "cypressVersion": "^13.6.0",
+    "specFiles": [],
+    "config": {},
+    "status": "completed",
+    "results": [],
+    "endTime": "2025-09-01T13:47:49.425Z",
+    "duration": 356
+  },
+  "tests": [],
+  "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "pending": 0,
+    "duration": 356,
+    "passRate": 0
+  },
+  "metadata": {
+    "generatedAt": "2025-09-01T13:47:49.426Z",
+    "reporter": "aurora-reporter",
+    "version": "1.0.0"
+  }
+}

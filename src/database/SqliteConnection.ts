@@ -1,4 +1,4 @@
-import * as sqlite3 from 'sqlite3';
+import sqlite3 from 'sqlite3';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import { DatabaseConfig, DatabaseConnection } from '../types';

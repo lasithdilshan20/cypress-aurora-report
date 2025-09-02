@@ -4,11 +4,11 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 export default defineConfig([
-  // CommonJS build
+  // CommonJS build for main entry
   {
     input: 'src/index.ts',
     output: {
-      file: 'dist/index.js',
+      file: 'dist/index.cjs',
       format: 'cjs',
       sourcemap: true,
       exports: 'auto'
@@ -47,7 +47,7 @@ export default defineConfig([
       'events'
     ]
   },
-  // ES Module build
+  // ES Module build for main entry
   {
     input: 'src/index.ts',
     output: {
@@ -86,6 +86,69 @@ export default defineConfig([
       'os',
       'crypto',
       'events'
+    ]
+  },
+  // CommonJS build for plugin subpath
+  {
+    input: 'src/plugin/cjs-entry.ts',
+    output: {
+      file: 'dist/plugin/index.cjs',
+      format: 'cjs',
+      sourcemap: true,
+      exports: 'default'
+    },
+    plugins: [
+      resolve({ preferBuiltins: true }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: false,
+        sourceMap: true
+      })
+    ],
+    external: [
+      'cypress',
+      'uuid',
+      'date-fns',
+      'fs-extra',
+      'sharp',
+      'path',
+      'fs',
+      'os',
+      'crypto',
+      'events',
+      'sqlite3'
+    ]
+  },
+  // ES Module build for plugin subpath
+  {
+    input: 'src/plugin/index.ts',
+    output: {
+      file: 'dist/plugin/index.js',
+      format: 'esm',
+      sourcemap: true
+    },
+    plugins: [
+      resolve({ preferBuiltins: true }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: false,
+        sourceMap: true
+      })
+    ],
+    external: [
+      'cypress',
+      'uuid',
+      'date-fns',
+      'fs-extra',
+      'sharp',
+      'path',
+      'fs',
+      'os',
+      'crypto',
+      'events',
+      'sqlite3'
     ]
   }
 ]);

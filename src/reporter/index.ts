@@ -1,4 +1,19 @@
-import { Base, interfaces } from 'mocha';
+import type { interfaces } from 'mocha';
+// Resolve Mocha's Base reporter at runtime without bundling Mocha
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let MochaBase: any;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const m = require('mocha');
+  // Try standard reporter paths
+  MochaBase = (m && (m.reporters?.Base || (m as any).Base)) || require('mocha/lib/reporters/base');
+} catch {
+  const g: any = (globalThis as any) || {};
+  MochaBase = g.Mocha?.reporters?.Base || g.Mocha?.Base;
+  if (!MochaBase) {
+    MochaBase = class {};
+  }
+}
 import { EventEmitter } from 'events';
 import { v4 as uuidv4 } from 'uuid';
 import * as path from 'path';
@@ -16,7 +31,7 @@ import { DatabaseManager } from '../database/DatabaseManager';
 import { Logger } from '../utils/Logger';
 import { ScreenshotManager } from '../utils/ScreenshotManager';
 
-export class AuroraReporter extends Base implements interfaces.ReporterConstructor {
+export class AuroraReporter extends MochaBase implements interfaces.ReporterConstructor {
   private config: AuroraReporterConfig;
   private databaseManager: DatabaseManager;
   private screenshotManager: ScreenshotManager;

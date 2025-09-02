@@ -1,8 +1,7 @@
 import { defineConfig } from 'cypress';
 
-// Note: Since we're using this as an example within the aurora reporter project,
-// we'll import the plugin directly from the source
-import auroraPlugin from '../../src/plugin/index.js';
+// Use the package entrypoints so this example validates the published API
+import auroraPlugin from 'cypress-aurora-reporter/plugin';
 
 export default defineConfig({
   e2e: {
@@ -12,7 +11,7 @@ export default defineConfig({
       return config;
     },
     // Configure Aurora Reporter as the primary reporter
-    reporter: '../../src/reporter/index.js',
+    reporter: 'cypress-aurora-reporter/reporter.cjs',
     reporterOptions: {
       enabled: true,
       outputDir: './aurora-reports',

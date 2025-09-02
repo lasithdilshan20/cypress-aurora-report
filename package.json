@@ -3,9 +3,32 @@
   "version": "1.0.0",
   "description": "Advanced Cypress test reporting with real-time dashboard, screenshots, and comprehensive analytics",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.esm.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin/index.d.ts",
+      "require": "./plugin.cjs",
+      "import": "./plugin.js"
+    },
+    "./reporter": {
+      "types": "./dist/reporter/index.d.ts",
+      "require": "./reporter.cjs",
+      "import": "./reporter.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "plugin": ["dist/plugin/index.d.ts"],
+      "reporter": ["dist/reporter/index.d.ts"]
+    }
+  },
   "engines": {
     "node": ">=16.0.0"
   },
@@ -90,6 +113,10 @@
   },
   "files": [
     "dist/",
+    "plugin.cjs",
+    "plugin.js",
+    "reporter.cjs",
+    "reporter.js",
     "README.md",
     "LICENSE"
   ]
