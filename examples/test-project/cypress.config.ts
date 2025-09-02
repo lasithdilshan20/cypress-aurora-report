@@ -15,6 +15,7 @@ export default defineConfig({
     reporterOptions: {
       enabled: true,
       outputDir: './aurora-reports',
+      html: true,
       dashboardPort: 4200,
       realTimeUpdates: true,
       screenshots: {

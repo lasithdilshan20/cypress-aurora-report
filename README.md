@@ -103,6 +103,27 @@ npx aurora-dashboard
 
 ## 📋 Configuration
 
+### HTML Report
+
+- By default, an HTML report is generated next to the JSON report for each run.
+- Output location: ./aurora-reports/aurora-report-<RUN_ID>.html
+- To disable HTML generation, set html: false in Aurora Reporter config.
+
+Example:
+
+```javascript
+// cypress.config.js
+module.exports = defineConfig({
+  e2e: {
+    reporter: 'cypress-aurora-reporter',
+    reporterOptions: {
+      outputDir: './aurora-reports',
+      html: true // set to false to disable
+    }
+  }
+});
+```
+
 ### Complete Configuration Options
 
 ```javascript
@@ -242,6 +263,19 @@ docker run -p 4200:4200 -v $(pwd)/aurora-reports:/app/data aurora-reporter
 # Or use Docker Compose
 docker-compose up -d
 ```
+
+### Running the Example Test Project
+
+You can quickly try Aurora Reporter using the included example under examples/test-project.
+
+Steps:
+- Build the reporter in the root: npm run build
+- Install and validate the example: cd examples/test-project && npm run setup
+- Run tests and generate reports (JSON + HTML): npm test
+- Open the latest HTML report: npm run report:open
+- Or run and auto-open report: npm run test:html
+
+Reports will be saved to examples/test-project/aurora-reports as aurora-report-<RUN_ID>.json and .html.
 
 ### Advanced Usage
 

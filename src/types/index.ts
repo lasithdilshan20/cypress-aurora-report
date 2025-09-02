@@ -36,6 +36,8 @@ export interface AuroraReporterConfig {
   realTimeUpdates?: boolean;
   theme?: Theme;
   enableDebugLogs?: boolean;
+  // When true (default), an HTML report will be generated alongside JSON
+  html?: boolean;
   screenshots?: ScreenshotConfig;
   database?: DatabaseConfig;
   filters?: FilterConfig;
